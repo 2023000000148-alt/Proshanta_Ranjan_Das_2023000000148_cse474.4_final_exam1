@@ -1,0 +1,49 @@
+"""
+Unit tests for string_analyzer.count_and_sum_vowels().
+
+Run with:
+    pytest test_string_analyzer.py -v
+"""
+
+from string_analyzer import count_and_sum_vowels
+
+
+# ---------------------------------------------------------------
+# Test 1: Standard string with lowercase vowels
+# ---------------------------------------------------------------
+def test_standard_string():
+    """
+    Test a standard mixed-case string.
+
+    "Hello" -> strip/lower -> "hello"
+    Vowels: 'e' (101), 'o' (111)
+    Expected: (2, 212)
+    """
+    assert count_and_sum_vowels("Hello") == (2, 212)
+
+
+# ---------------------------------------------------------------
+# Test 2: Empty string and string with no vowels
+# ---------------------------------------------------------------
+def test_no_vowels_and_empty():
+    """
+    Test both edge cases:
+        - Empty string "" -> (0, 0)
+        - String with no vowels "fly" -> (0, 0)
+    """
+    assert count_and_sum_vowels("") == (0, 0)
+    assert count_and_sum_vowels("fly") == (0, 0)
+
+
+# ---------------------------------------------------------------
+# Test 3: Mixed casing, numbers, and symbols
+# ---------------------------------------------------------------
+def test_uppercase_and_symbols():
+    """
+    Test a string containing uppercase letters, digits, symbols, and spaces.
+
+    "A1! e" -> strip/lower -> "a1! e"
+    Vowels: 'a' (97), 'e' (101)
+    Expected: (2, 198)
+    """
+    assert count_and_sum_vowels("A1! e") == (2, 198)
